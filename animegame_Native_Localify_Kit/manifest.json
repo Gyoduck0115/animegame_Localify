@@ -1,0 +1,26 @@
+{
+  "name": "animegame_Native_Localify_Kit",
+  "created_at": "2026-06-11T03:05:00+09:00",
+  "target": {
+    "app_family": "animegame",
+    "tested_version": "12.6.6",
+    "runtime": "LiveContainer Tweaks + JIT"
+  },
+  "approach": "native-il2cpp-method-pointer-plus-textasset-icall-data-hook",
+  "output_expected": "out/animegame_Native_Localify.dylib",
+  "required_local_files": [
+    {
+      "path": "g.js",
+      "note": "Not committed because it is large. Place it next to build_macos.sh before building.",
+      "observed_sha256": "e68fea76acb90cd68ae6b9a3c4de4127f4909e877c167d2a851d052a09aace89",
+      "observed_translation_entries": 159469,
+      "observed_blob_size": 11962190
+    }
+  ],
+  "included_files": {
+    "build_script": "build_macos.sh",
+    "native_source": "animegame_native_localify.mm",
+    "blob_maker": "make_translation_blob.py",
+    "readme": "README_KO.md"
+  }
+}
