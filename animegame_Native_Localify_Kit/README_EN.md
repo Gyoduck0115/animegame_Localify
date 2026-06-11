@@ -5,6 +5,7 @@ This is a native iOS dylib build kit intended for use with LiveContainer Tweaks.
 ## Included Files
 
 - `build_macos.sh`: macOS/Xcode build script for an iOS arm64 dylib
+- `embed_into_ipa_macos.sh`: copies the built dylib into an IPA's `Frameworks` directory and adds the load command
 - `animegame_native_localify.mm`: native IL2CPP hook implementation
 - `make_translation_blob.py`: converts `translation_default` from `g.js` into a native binary blob
 - `manifest.json`: metadata for the current kit
@@ -17,7 +18,7 @@ This is a native iOS dylib build kit intended for use with LiveContainer Tweaks.
 animegame_Native_Localify_Kit/g.js
 ```
 
-## Build
+## Build The Dylib
 
 ```bash
 cd animegame_Native_Localify_Kit
@@ -31,7 +32,33 @@ Output:
 out/animegame_Native_Localify.dylib
 ```
 
+## LiveContainer Tweaks Mode
+
 Put only the built dylib into the LiveContainer Tweaks folder, then run the app with JIT enabled.
+
+## IPA Frameworks Embedding Mode
+
+You can also embed the built dylib into `Payload/*.app/Frameworks/` inside an IPA and add an `LC_LOAD_DYLIB` command to the main executable.
+
+Required tool:
+
+```text
+optool or insert_dylib
+```
+
+Basic usage:
+
+```bash
+bash ./embed_into_ipa_macos.sh /path/to/input.ipa
+```
+
+To explicitly choose the dylib and output IPA:
+
+```bash
+bash ./embed_into_ipa_macos.sh /path/to/input.ipa ./out/animegame_Native_Localify.dylib ./out/input_animegame_embed.ipa
+```
+
+This mode modifies the IPA and requires signing again. LiveContainer or your sideloading tool may need to re-sign the app.
 
 ## Logs
 
