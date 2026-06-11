@@ -1,0 +1,8 @@
+g.js
+build/
+out/
+*.dylib
+*.ipa
+*.zip
+*.log
+.DS_Store
